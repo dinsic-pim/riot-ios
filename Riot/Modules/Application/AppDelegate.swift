@@ -51,6 +51,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let window = UIWindow(frame: UIScreen.main.bounds)
         self.window = window
         
+        // Tchap: secure window to prevent screenshot and screen recording (only in PRODUCTION environment)
+        #if TCHAP_PRODUCTION
+        window.makeSecure()
+        #endif
+        
         // Create AppCoordinator
         self.rootRouter = RootRouter(window: window)
         
